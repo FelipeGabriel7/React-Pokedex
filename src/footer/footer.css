@@ -1,0 +1,7 @@
+.footer-component{
+    display: flex;
+    padding: 2em;
+    font-weight: 600;
+    background: #222;
+    justify-content: center;
+}

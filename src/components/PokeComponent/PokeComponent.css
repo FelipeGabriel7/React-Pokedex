@@ -1,0 +1,61 @@
+.container-pokemon{
+    margin: 2em auto;
+    display: flex;
+    color: #444;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+    width: 380px;
+    height: 350px;
+    gap: 1em;
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 0.4em #222;
+    text-align: center;
+    z-index: 3;
+}
+
+
+.close-info{
+    text-align: end;
+    margin: 0.5em auto;
+}
+
+
+.pokemon-text{
+    font-size: 1.5em;
+    background: #09e;
+    border-radius: 0.5em;
+    color: #eee;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.stats-pokemon{
+    display: flex;
+    gap: 2em;
+    justify-content: space-between;
+}
+
+.stats{
+    background: #0295df;
+    color: #fff;
+    padding: 0.4em 1em;
+    border-radius: 0.5em;
+}
+
+.life{
+    background: rgb(4, 98, 4);
+}
+
+.defense{
+    background: rgb(81, 4, 81);
+}
+
+
+.attack{
+    background: #f14;
+}
+
+.pokemon-image{
+    width: 200px;
+}

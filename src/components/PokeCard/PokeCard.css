@@ -1,0 +1,78 @@
+.pokemon-info{
+    position: relative;
+    background: rgb(255, 255, 255);
+    padding: 2em;
+    border-radius: 1em 1.2em;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    cursor: pointer;
+    box-shadow: 0.5em 0.5em 0.5em rgba(36, 34, 34, 0.915);
+    justify-content: space-between;
+    text-align: center;
+    flex-direction: column;
+}
+
+
+
+
+
+.pokemon-name{
+    color: #222;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+
+.pokemon-name:hover{
+    transition: 0.3s all ease-in-out;
+    color: #09e;
+}
+
+.image-pokemon{
+    width: 200px;
+    background: #09e;
+}
+
+
+.btn-details{
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.button-pokemon{
+    padding: 1em 2em;
+    border: none;
+    border-radius: 0.5em;
+    box-shadow: 0.1em 0.1em 0.1em 0.1em #060463;
+    background: #060463;
+    color: #eee;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s all ease-in;
+}
+
+
+.button-pokemon::after{
+    transition: 0.5s all ease-in;
+    color: #eee;
+    background: #0907ac;
+    box-shadow: 0.1em 0.1em 0.1em 0.1em #0a07ac;
+
+}
+
+.button-pokemon:hover{
+    transition: 0.5s all ease-in;
+    color: #eee;
+    background: #06b3de;
+    box-shadow: 0.1em 0.1em 0.1em 0.1em #07c2c2;
+
+}
+
+.button-pokemon::before{
+    transition: 0.5s all ease-in;
+    color: #eee;
+    background: #06b3de;
+
+}
