@@ -5,9 +5,10 @@
     align-items: center;
     justify-content: center;
     background: #eee;
-    width: 380px;
-    height: 350px;
+    max-width: 380px;
+    min-height: 60vh;
     gap: 1em;
+    padding: 1em;
     border-radius: 0.5em;
     box-shadow: 0.2em 0.2em 0.4em #222;
     text-align: center;

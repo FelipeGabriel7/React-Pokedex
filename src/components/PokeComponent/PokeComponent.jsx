@@ -7,7 +7,6 @@ export class PokeComponent extends React.Component {
 
     return (
       <>
-        <div className="container">
           <div className="container-pokemon">
 
 
@@ -38,8 +37,7 @@ export class PokeComponent extends React.Component {
               </div>
             )}
           </div>
-          <div className="pokeball"></div>
-        </div>
+
       </>
     );
   }

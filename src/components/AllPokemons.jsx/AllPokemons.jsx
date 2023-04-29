@@ -52,9 +52,9 @@ export class AllPokemons extends React.Component {
       <>
         <div className="pokemon-container">
           {pokemons &&
-            pokemons.map((poke) => (
+            pokemons.map((poke , id) => (
               <>
-                <PokCard key={poke.id} name={poke.name} url={poke.url} />
+                <PokCard key={id} name={poke.name} url={poke.url} />
               </>
             ))}
         </div>

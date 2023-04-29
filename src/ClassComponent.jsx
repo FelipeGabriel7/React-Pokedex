@@ -37,7 +37,7 @@ export class ClassComponent extends React.Component {
           const response = await request.json();
       
           try {
-            console.log(response);
+      
       
             this.setState({
               posts: response,
@@ -62,7 +62,6 @@ export class ClassComponent extends React.Component {
         this.APIsearch();
     }
 
-    return console.log(' Estado não mudou')
   }
 
 
