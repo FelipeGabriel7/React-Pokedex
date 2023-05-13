@@ -1,21 +1,14 @@
-import React from "react";
-import './PokeForm.css'
+import "./PokeForm.css";
 
-export class PokeForm extends React.Component {
+export const PokeForm = ({ handleClick, handleUser }) => {
+  return (
+    <>
+      <div className="search-pokemon">
+        <div className="search-pokemon-title">
+          <h2> Buscar Pokemon </h2>
+        </div>
 
-
-  render() {
-    const { handleClick, handleUser } = this.props;
-
-    return (
-    
-        <div className="search-pokemon">
-
-              <div className="search-pokemon-title">
-                <h2> Buscar Pokemon </h2>
-              </div>
-
-              <form className="search-pokemon-form">
+        <form className="search-pokemon-form">
           <label>
             <input
               type="search"
@@ -27,12 +20,45 @@ export class PokeForm extends React.Component {
           </label>
 
           <button className="btn-search" onClick={(e) => handleClick(e)}>
-              Buscar
-            </button>
+            Buscar
+          </button>
         </form>
+      </div>
+    </>
+  );
+};
 
-        </div>
-      
-    );
-  }
-}
+// export class PokeForm extends React.Component {
+
+//   render() {
+//     const { handleClick, handleUser } = this.props;
+
+//     return (
+
+//         <div className="search-pokemon">
+
+//               <div className="search-pokemon-title">
+//                 <h2> Buscar Pokemon </h2>
+//               </div>
+
+//               <form className="search-pokemon-form">
+//           <label>
+//             <input
+//               type="search"
+//               className="input-pokemon"
+//               name="poke"
+//               placeholder="busque seu pokemon"
+//               onChange={handleUser}
+//             />
+//           </label>
+
+//           <button className="btn-search" onClick={(e) => handleClick(e)}>
+//               Buscar
+//             </button>
+//         </form>
+
+//         </div>
+
+//     );
+//   }
+// }

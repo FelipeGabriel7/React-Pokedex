@@ -1,112 +1,158 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
 import { PokeComponent } from "./components/PokeComponent/PokeComponent";
 import { PokeForm } from "./components/FormPokemon/PokeForm";
-import { AllPokemons } from "./components/AllPokemons.jsx/AllPokemons";
 import { Footer } from "./footer/Footer";
+import { FinalPokemons } from "./components/AllPokemons/AllPokemons";
 
-export class ClassComponent extends React.Component {
-  constructor(props) {
-    super(props);
+export const Home = () => {
+  const [posts, setPosts] = useState([]);
+  const [namePokemon, setNamePokemon] = useState("");
+  const [name, setName] = useState("");
 
-    this.APIsearch = this.APIsearch.bind(this);
-    this.handleUserName = this.handleUserName.bind(this);
-    this.handleClickSearch = this.handleClickSearch.bind(this);
 
-    this.state = {
-      posts: [],
-      counter: 0,
-      namePokemon: "",
-      name: ''
-    };
+  function handleUserName(e) {
+    e.preventDefault();
+    setName(e.target.value);
   }
 
-  async APIsearch() {
+  function handleClickSearch(e) {
+    e.preventDefault();
+    setNamePokemon(name);
+  }
 
-    const nameP = this.state.namePokemon ? this.state.namePokemon : ''
+   async function APIsearch() {
+    const nameP = namePokemon ? namePokemon : "";
 
+    if (nameP !== "" || nameP !== undefined) {
+      const request = await fetch(
+        "https://pokeapi.co/api/v2/pokemon" + (nameP ? "/" + nameP : "/ditto"),
+        {
+          method: "GET",
+        }
+      );
 
-    if(nameP !== '' || nameP !== undefined){
-        const request = await fetch(
-            "https://pokeapi.co/api/v2/pokemon" + ( nameP ? '/' + nameP : '/ditto' ) ,
-            {
-              method: "GET",
-            }
-          );
-      
-          const response = await request.json();
-      
-          try {
-      
-      
-            this.setState({
-              posts: response,
-            });
-          } catch (e) {
-            console.log(e);
-          }
-    }else{
-        return nameP
+      const response = await request.json();
+
+      try {
+        setPosts(response)
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      return nameP;
     }
-
-
   }
 
-  componentDidMount() {
-    this.APIsearch();
-  }
+  useEffect(() => {
+    APIsearch()
+  }, [])
 
 
-  componentDidUpdate(prevProps , prevState){
-    if(prevState.namePokemon !== this.state.namePokemon){
-        this.APIsearch();
-    }
+  return (
+    <>
+      <section>
+        <PokeForm
+          handleClick={handleClickSearch}
+          handleUser={handleUserName}
+        />
 
-  }
+        {namePokemon && <PokeComponent posts={posts} />}
 
+        {!namePokemon && <span></span>}
 
-  handleUserName(e){
+        <FinalPokemons /> 
 
-    e.preventDefault()
-    this.setState({
-        name: e.target.value
-    })
-    
+        <Footer />
+      </section>
+    </>
+  );
+};
 
-  }
+// export class ClassComponent extends React.Component {
+//   constructor(props) {
+//     super(props);
 
-  handleClickSearch(e){
+//     this.APIsearch = this.APIsearch.bind(this);
+//     this.handleUserName = this.handleUserName.bind(this);
+//     this.handleClickSearch = this.handleClickSearch.bind(this);
 
-    e.preventDefault()
+//     this.state = {
+//       posts: [],
+//       counter: 0,
+//       namePokemon: "",
+//       name: "",
+//     };
+//   }
 
-    this.setState({
-        namePokemon: this.state.name
-    })
+//   async APIsearch() {
+//     const nameP = this.state.namePokemon ? this.state.namePokemon : "";
 
+//     if (nameP !== "" || nameP !== undefined) {
+//       const request = await fetch(
+//         "https://pokeapi.co/api/v2/pokemon" + (nameP ? "/" + nameP : "/ditto"),
+//         {
+//           method: "GET",
+//         }
+//       );
 
-  }
+//       const response = await request.json();
 
-  render() {
-    const { posts } = this.state;
+//       try {
+//         this.setState({
+//           posts: response,
+//         });
+//       } catch (e) {
+//         console.log(e);
+//       }
+//     } else {
+//       return nameP;
+//     }
+//   }
 
-    return (
-        <section>
-       
-        <PokeForm handleClick={this.handleClickSearch} handleUser={this.handleUserName}/> 
-       
-        {this.state.namePokemon && (
-           <PokeComponent posts={posts}/>
-        )}
+//   componentDidMount() {
+//     this.APIsearch();
+//   }
 
-        {!this.state.namePokemon && (
-            <span></span>
-        )}
-          
+//   componentDidUpdate(prevProps, prevState) {
+//     if (prevState.namePokemon !== this.state.namePokemon) {
+//       this.APIsearch();
+//     }
+//   }
 
-        <AllPokemons/> 
-          
-        <Footer/> 
-        </section>
-    );
-  }
-}
+//   handleUserName(e) {
+//     e.preventDefault();
+//     this.setState({
+//       name: e.target.value,
+//     });
+//   }
+
+//   handleClickSearch(e) {
+//     e.preventDefault();
+
+//     this.setState({
+//       namePokemon: this.state.name,
+//     });
+//   }
+
+//   render() {
+//     const { posts } = this.state;
+
+//     return (
+//       <section>
+//         <PokeForm
+//           handleClick={this.handleClickSearch}
+//           handleUser={this.handleUserName}
+//         />
+
+//         {this.state.namePokemon && <PokeComponent posts={posts} />}
+
+//         {!this.state.namePokemon && <span></span>}
+
+//         <AllPokemons />
+
+//         <Footer />
+//       </section>
+//     );
+//   }
+// }
